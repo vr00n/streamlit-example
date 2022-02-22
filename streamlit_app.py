@@ -3,10 +3,11 @@ from bokeh.models.widgets import Button
 from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 import leafmap.foliumap as leafmap
+import requests
+import json
+#import pyttsx3
 
 st.set_page_config(layout="wide")
-
-
 loc_button = Button(label="Get Device Location", max_width=150)
 loc_button.js_on_event(
 "button_click",
@@ -41,3 +42,21 @@ if result:
     popup = f"lat, lon: {lat}, {lon}"
     m.add_marker(location=(lat, lon), popup=popup)
     m.to_streamlit()
+
+url="https://en.wikipedia.org/w/api.php?action=query&\
+format=json&\
+prop=extracts&\
+titles=Main%20Page&\
+generator=geosearch&\
+formatversion=latest&\
+exsentences=3&\
+exintro=1&\
+explaintext=1&\
+ggsradius=1000&\
+ggslimit=2&\
+ggscoord="+str(g.lat)+"|"+str(g.lng)
+print (url)
+r = requests.get(url)
+r_json=json.loads(r.text)
+speech=r_json["query"]["pages"][0]["extract"]
+st.write(json.dumps(r_json, indent=4, sort_keys=True))
