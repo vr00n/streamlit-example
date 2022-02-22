@@ -59,3 +59,10 @@ if result:
     r_json=json.loads(r.text)
     speech=r_json["query"]["pages"][0]["extract"]
     st.json(r_json)
+    
+    #Speak
+    engine = pyttsx3.init()
+    engine.say(speech)
+    #engine.save_to_file(speech, 'speech.mp3')
+    engine.runAndWait()
+
