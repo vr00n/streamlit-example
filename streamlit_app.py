@@ -51,7 +51,7 @@ if result:
     exsentences=3&\
     exintro=1&\
     explaintext=1&\
-    ggsradius=1000&\
+    ggsradius=5000&\
     ggslimit=2&\
     ggscoord="+str(lat)+"|"+str(lon)
     print (url)
