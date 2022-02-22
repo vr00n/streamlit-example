@@ -62,8 +62,8 @@ if result:
     
     #Speak
     
-    mp3 = gTTS(speech = t, lang = 'en', slow = False)
+    mp3 = gTTS(speech, lang = 'en', slow = False)
     mp3.save('speech.mp3')
     audio_file = open('speech.mp3', 'rb')
     audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/mpeg')
+    st.audio(audio_bytes, format='audio/wav')
