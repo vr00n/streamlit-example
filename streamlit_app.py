@@ -5,7 +5,7 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 import leafmap.foliumap as leafmap
 import requests
 import json
-import pyttsx3
+from gtts import gTTS
 
 st.set_page_config(layout="wide")
 loc_button = Button(label="Get Device Location", max_width=150)
@@ -61,8 +61,9 @@ if result:
     st.json(r_json)
     
     #Speak
-    engine = pyttsx3.init()
-    engine.say(speech)
-    #engine.save_to_file(speech, 'speech.mp3')
-    engine.runAndWait()
-
+    
+    mp3 = gTTS(speech = t, lang = 'en', slow = False)
+    mp3.save('speech.mp3')
+    audio_file = open('speech.mp3', 'rb')
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format='audio/mpeg')
