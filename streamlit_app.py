@@ -41,4 +41,3 @@ def app():
             popup = f"lat, lon: {lat}, {lon}"
             m.add_marker(location=(lat, lon), popup=popup)
             m.to_streamlit()
-app.run()
