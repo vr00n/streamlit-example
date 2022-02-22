@@ -4,9 +4,9 @@ from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 import leafmap.foliumap as leafmap
 
+st.set_page_config(layout="wide")
 
 def app():
-
     loc_button = Button(label="Get Device Location", max_width=150)
     loc_button.js_on_event(
         "button_click",
