@@ -58,4 +58,4 @@ if result:
     r = requests.get(url)
     r_json=json.loads(r.text)
     speech=r_json["query"]["pages"][0]["extract"]
-    st.write(json.dumps(r_json, indent=4, sort_keys=True))
+    st.json(r_json)
