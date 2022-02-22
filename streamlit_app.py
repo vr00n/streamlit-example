@@ -54,7 +54,7 @@ exintro=1&\
 explaintext=1&\
 ggsradius=1000&\
 ggslimit=2&\
-ggscoord="+str(g.lat)+"|"+str(g.lng)
+ggscoord="+str(lat)+"|"+str(lon)
 print (url)
 r = requests.get(url)
 r_json=json.loads(r.text)
