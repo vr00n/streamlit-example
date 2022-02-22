@@ -7,7 +7,7 @@ import leafmap.foliumap as leafmap
 st.set_page_config(layout="wide")
 
 def app():
-    loc_button = Button(label="Get Device Location", max_width=150)
+    loc_button = st.button('Get Device Location')
     loc_button.js_on_event(
         "button_click",
         CustomJS(
