@@ -6,7 +6,6 @@ streamlit-folium
 streamlit-keplergl
 streamlit-bokeh-events
 requests
-json
 # leafmap
 # geemap
 git+https://github.com/giswqs/leafmap
