@@ -5,7 +5,7 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 import leafmap.foliumap as leafmap
 import requests
 import json
-#import pyttsx3
+import pyttsx3
 
 st.set_page_config(layout="wide")
 loc_button = Button(label="Get Device Location", max_width=150)
