@@ -36,34 +36,35 @@ if result:
         lat = loc.get("lat")
         lon = loc.get("lon")
         st.write(f"Lat, Lon: {lat}, {lon}")
+        
+        url="https://en.wikipedia.org/w/api.php?action=query&\
+        format=json&\
+        prop=extracts&\
+        titles=Main%20Page&\
+        generator=geosearch&\
+        formatversion=latest&\
+        exsentences=3&\
+        exintro=1&\
+        explaintext=1&\
+        ggsradius=5000&\
+        ggslimit=2&\
+        ggscoord="+str(lat)+"|"+str(lon)
+        print (url)
+        r = requests.get(url)
+        r_json=json.loads(r.text)
+        speech=r_json["query"]["pages"][0]["extract"]
+        st.json(r_json)
 
-    m = leafmap.Map(center=(lat, lon), zoom=16)
-    m.add_basemap("ROADMAP")
-    popup = f"lat, lon: {lat}, {lon}"
-    m.add_marker(location=(lat, lon), popup=popup)
-    m.to_streamlit()
-    url="https://en.wikipedia.org/w/api.php?action=query&\
-    format=json&\
-    prop=extracts&\
-    titles=Main%20Page&\
-    generator=geosearch&\
-    formatversion=latest&\
-    exsentences=3&\
-    exintro=1&\
-    explaintext=1&\
-    ggsradius=5000&\
-    ggslimit=2&\
-    ggscoord="+str(lat)+"|"+str(lon)
-    print (url)
-    r = requests.get(url)
-    r_json=json.loads(r.text)
-    speech=r_json["query"]["pages"][0]["extract"]
-    st.json(r_json)
-    
-    #Speak
-    
-    mp3 = gTTS(speech, lang = 'en', slow = False)
-    mp3.save('speech.mp3')
-    audio_file = open('speech.mp3', 'rb')
-    audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/wav')
+        #Speak
+
+        mp3 = gTTS(speech, lang = 'en', slow = False)
+        mp3.save('speech.mp3')
+        audio_file = open('speech.mp3', 'rb')
+        audio_bytes = audio_file.read()
+        st.audio(audio_bytes, format='audio/wav')
+        
+        m = leafmap.Map(center=(lat, lon), zoom=16)
+        m.add_basemap("ROADMAP")
+        popup = f"lat, lon: {lat}, {lon}"
+        m.add_marker(location=(lat, lon), popup=popup)
+        m.to_streamlit()
