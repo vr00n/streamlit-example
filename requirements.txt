@@ -2,3 +2,11 @@ altair
 pandas
 streamlit
 streamlit-bokeh-events
+streamlit-folium
+streamlit-keplergl
+streamlit-bokeh-events
+# leafmap
+# geemap
+git+https://github.com/giswqs/leafmap
+git+https://github.com/giswqs/geemap
+
