@@ -21,20 +21,20 @@ navigator.geolocation.getCurrentPosition(
 ),
 )
 result = streamlit_bokeh_events(
-loc_button,
-events="GET_LOCATION",
-key="get_location",
-refresh_on_update=False,
-override_height=75,
-debounce_time=0,
+    loc_button,
+    events="GET_LOCATION",
+    key="get_location",
+    refresh_on_update=False,
+    override_height=75,
+    debounce_time=0,
 )
 
 if result:
-if "GET_LOCATION" in result:
-    loc = result.get("GET_LOCATION")
-    lat = loc.get("lat")
-    lon = loc.get("lon")
-    st.write(f"Lat, Lon: {lat}, {lon}")
+    if "GET_LOCATION" in result:
+        loc = result.get("GET_LOCATION")
+        lat = loc.get("lat")
+        lon = loc.get("lon")
+        st.write(f"Lat, Lon: {lat}, {lon}")
 
     m = leafmap.Map(center=(lat, lon), zoom=16)
     m.add_basemap("ROADMAP")
