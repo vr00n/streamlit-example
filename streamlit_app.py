@@ -36,7 +36,7 @@ if result:
         loc = result.get("GET_LOCATION")
         lat = loc.get("lat")
         lon = loc.get("lon")
-        requests.get("https://docs.google.com/forms/d/1Kh3jHjKQxwbRKr1lCYEfBJqFcjsQ9CkVx6jTJrWIppM/formResponse",params = {"entry.1738630543": lat,"entry.267640680": lon}}
+        requests.get("https://docs.google.com/forms/d/1Kh3jHjKQxwbRKr1lCYEfBJqFcjsQ9CkVx6jTJrWIppM/formResponse",params = {"entry.1738630543": lat,"entry.267640680": lon})
         st.write(f"Lat, Lon: {lat}, {lon}")
         
         url="https://en.wikipedia.org/w/api.php?action=query&\
