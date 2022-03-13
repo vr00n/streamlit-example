@@ -7,6 +7,7 @@ import requests
 import json
 from gtts import gTTS
 
+@st.cache(suppress_st_warning=True)
 st.set_page_config(layout="wide")
 loc_button = Button(label="Get Device Location", max_width=150)
 loc_button.js_on_event(
